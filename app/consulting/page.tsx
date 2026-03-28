@@ -1,132 +1,137 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
-import CalendlyEmbed from "@/components/CalendlyEmbed";
 
 export const metadata: Metadata = {
   title: "Consulting",
   description:
-    "Book a free discovery call or hire AutomateQ to build custom AI and automation workflows for your business.",
+    "Custom automation consulting by AutomateQ. Book a free 30-minute discovery call.",
 };
 
 const services = [
   {
-    icon: "🤖",
-    title: "AI workflow automation",
-    description:
-      "Connect your existing tools with AI to cut repetitive tasks — email drafting, data entry, report generation, and more.",
-  },
-  {
-    icon: "🏭",
-    title: "Manufacturing ops",
-    description:
-      "Automate production tracking, quality checklists, inventory alerts, and shift hand-off reports.",
-  },
-  {
-    icon: "📋",
     title: "Workflow automation",
     description:
-      "Map your current process, identify bottlenecks, and build automated solutions using tools you already own.",
+      "We map your manual processes and build pipelines that run automatically — cutting hours of repetitive work each week.",
+  },
+  {
+    title: "Custom tool development",
+    description:
+      "Need something that doesn't exist yet? We design and build lightweight tools scoped exactly to your workflow.",
+  },
+  {
+    title: "Integrations & APIs",
+    description:
+      "Connect your existing apps — CRM to spreadsheet, webhook to Slack, database to dashboard. We handle the plumbing.",
   },
 ];
 
-const pricing = [
+const pricingTiers = [
   {
     name: "Discovery call",
     price: "Free",
-    description: "30-minute call to understand your problem and explore solutions.",
-    cta: "Book now",
-  },
-  {
-    name: "Hourly consulting",
-    price: "$150 / hr",
     description:
-      "Hands-on build sessions, code review, or step-by-step tool setup with you.",
-    cta: "Get in touch",
+      "30-minute video call. We listen to your problem and tell you honestly if we can help.",
+    highlight: false,
   },
   {
     name: "Project-based",
-    price: "Custom quote",
+    price: "From $500",
     description:
-      "End-to-end automation built and delivered for a fixed price. Includes documentation.",
-    cta: "Get in touch",
+      "Fixed scope, fixed price. Ideal for one-off tools, integrations, or automations with clear requirements.",
+    highlight: true,
+  },
+  {
+    name: "Retainer",
+    price: "From $1,200/mo",
+    description:
+      "Ongoing development and support for teams that need a reliable automation partner.",
+    highlight: false,
   },
 ];
 
 export default function ConsultingPage() {
   return (
-    <div className="px-4 py-16">
-      <div className="mx-auto max-w-4xl">
-        <h1 className="mb-2 text-3xl font-bold text-gray-900 dark:text-white">
-          Done-for-you automation
+    <div className="space-y-20 px-4 py-16">
+      {/* Hero */}
+      <div className="mx-auto max-w-2xl text-center">
+        <h1 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white">
+          Consulting
         </h1>
-        <p className="mb-12 text-lg text-gray-500 dark:text-gray-400">
-          Want AI or automation built specifically for your workflow? Let&apos;s
-          talk — the first call is free.
+        <p className="text-lg text-gray-500 dark:text-gray-400">
+          You know your problem better than anyone. We know automation.
+          Let&apos;s build a solution together.
         </p>
-
-        {/* Services */}
-        <section className="mb-16">
-          <h2 className="mb-6 text-xl font-semibold text-gray-900 dark:text-white">
-            What I can help with
-          </h2>
-          <div className="grid gap-6 sm:grid-cols-3">
-            {services.map((s) => (
-              <div key={s.title} className="card">
-                <div className="mb-3 text-3xl">{s.icon}</div>
-                <h3 className="mb-2 font-semibold text-gray-900 dark:text-white">
-                  {s.title}
-                </h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
-                  {s.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Pricing */}
-        <section className="mb-16">
-          <h2 className="mb-6 text-xl font-semibold text-gray-900 dark:text-white">
-            Pricing
-          </h2>
-          <div className="grid gap-6 sm:grid-cols-3">
-            {pricing.map((p, i) => (
-              <div
-                key={p.name}
-                className={`card flex flex-col gap-3 ${
-                  i === 0 ? "ring-2 ring-blue-500" : ""
-                }`}
-              >
-                <h3 className="font-semibold text-gray-900 dark:text-white">
-                  {p.name}
-                </h3>
-                <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">
-                  {p.price}
-                </p>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
-                  {p.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Calendly */}
-        <section className="mb-16">
-          <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
-            Book a free discovery call
-          </h2>
-          <CalendlyEmbed />
-        </section>
-
-        {/* Contact form */}
-        <section>
-          <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
-            Or send a message
-          </h2>
-          <ContactForm />
-        </section>
       </div>
+
+      {/* Services */}
+      <section className="mx-auto max-w-6xl">
+        <h2 className="mb-8 text-center text-2xl font-bold text-gray-900 dark:text-white">
+          What we build
+        </h2>
+        <div className="grid gap-6 sm:grid-cols-3">
+          {services.map(({ title, description }) => (
+            <div key={title} className="card">
+              <h3 className="mb-2 font-bold text-gray-900 dark:text-white">
+                {title}
+              </h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                {description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Pricing */}
+      <section className="mx-auto max-w-6xl">
+        <h2 className="mb-8 text-center text-2xl font-bold text-gray-900 dark:text-white">
+          Pricing
+        </h2>
+        <div className="grid gap-6 sm:grid-cols-3">
+          {pricingTiers.map(({ name, price, description, highlight }) => (
+            <div
+              key={name}
+              className={`card flex flex-col gap-3 ${highlight ? "ring-2 ring-blue-500" : ""}`}
+            >
+              <h3 className="font-bold text-gray-900 dark:text-white">{name}</h3>
+              <p className="text-2xl font-extrabold text-blue-600 dark:text-blue-400">
+                {price}
+              </p>
+              <p className="flex-1 text-sm text-gray-500 dark:text-gray-400">
+                {description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Book a call */}
+      <section className="mx-auto max-w-2xl text-center">
+        <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
+          Book a free call
+        </h2>
+        <p className="mb-6 text-gray-500 dark:text-gray-400">
+          Pick a time that works for you. No sales pressure — just a
+          conversation.
+        </p>
+        {/* Replace this href with your real Calendly link */}
+        <a
+          href="https://calendly.com/AutomateQ"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-primary"
+        >
+          Open Calendly
+        </a>
+      </section>
+
+      {/* Contact form */}
+      <section className="mx-auto max-w-2xl">
+        <h2 className="mb-6 text-center text-2xl font-bold text-gray-900 dark:text-white">
+          Or send a message
+        </h2>
+        <ContactForm />
+      </section>
     </div>
   );
 }
